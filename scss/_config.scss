@@ -1,0 +1,13 @@
+//Variables
+$primary-color: #28aabc;
+$secondary-color: #d728ca;
+$tertiary-color: #dddddd;
+$background-color-primary: #000;
+$primary-font-stack: 'Jura', monospace, sans-serif;
+$digital-font-stack: 'VT323', monospace, sans-serif;
+//Mixins
+@mixin basic-box-shadow($hOffset, $vOffset, $blur, $spread, $colorRgba) {
+  -webkit-box-shadow: $hOffset $vOffset $blur $spread $colorRgba;
+  -moz-box-shadow: $hOffset $vOffset $blur $spread $colorRgba;
+  box-shadow: $hOffset $vOffset $blur $spread $colorRgba;
+}

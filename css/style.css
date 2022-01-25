@@ -1,0 +1,186 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  background-color: #1a1a1a;
+  font-family: "Jura", monospace, sans-serif;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: 12vh;
+  font-size: 1.4em;
+  color: #000;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px #28aabc, 0 0 1em #d728ca, 0 0 0.2em #28aabc;
+}
+
+#drum-machine {
+  height: 70vh;
+  width: 80%;
+  border: 1px solid #777777;
+  background-color: #000;
+  -webkit-box-shadow: 0px 0px 7px 2px #666666;
+  -moz-box-shadow: 0px 0px 7px 2px #666666;
+  box-shadow: 0px 0px 7px 2px #666666;
+}
+
+#display {
+  height: 1.5em;
+  width: 50%;
+  border: 2px solid #811879;
+  font-size: 2.5em;
+  line-height: 1.4em;
+  text-align: center;
+  background-color: #28aabc;
+  margin-inline: auto;
+  margin-block-start: 1em;
+  font-family: "VT323", monospace, sans-serif;
+  text-transform: uppercase;
+  -webkit-box-shadow: inset 0px 0px 20px 2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: inset 0px 0px 20px 2px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0px 0px 20px 2px rgba(0, 0, 0, 0.75);
+}
+
+#keyboard {
+  height: 60%;
+  width: 80%;
+  margin-inline: auto;
+  margin-block: 7vh;
+}
+
+#keys {
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: space-between;
+  align-content: space-between;
+  height: 100%;
+  width: 100%;
+}
+#keys li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 25%;
+  width: 30%;
+  list-style: none;
+  border-radius: 5px;
+  font-size: 2em;
+  color: #919191;
+  text-transform: uppercase;
+  background-color: #000;
+  -webkit-box-shadow: 2px 2px 3px 3px rgba(215, 40, 202, 0.75);
+  -moz-box-shadow: 2px 2px 3px 3px rgba(215, 40, 202, 0.75);
+  box-shadow: 2px 2px 3px 3px rgba(215, 40, 202, 0.75);
+  transition: box-shadow 80ms ease-out;
+}
+#keys li:hover {
+  color: #dddddd;
+  cursor: grab;
+}
+#keys li:active {
+  color: #dddddd;
+  -webkit-box-shadow: 2px 2px 5px -1px #d728ca;
+  -moz-box-shadow: 2px 2px 5px -1px #d728ca;
+  box-shadow: 2px 2px 5px -1px #d728ca;
+}
+#keys li:nth-of-type(even) {
+  -webkit-box-shadow: 2px 2px 3px 3px rgba(40, 170, 188, 0.75);
+  -moz-box-shadow: 2px 2px 3px 3px rgba(40, 170, 188, 0.75);
+  box-shadow: 2px 2px 3px 3px rgba(40, 170, 188, 0.75);
+}
+#keys li:nth-of-type(even):active {
+  color: #dddddd;
+  -webkit-box-shadow: 2px 2px 5px -1px #28aabc;
+  -moz-box-shadow: 2px 2px 5px -1px #28aabc;
+  box-shadow: 2px 2px 5px -1px #28aabc;
+}
+
+.even-pad-clicked {
+  -webkit-box-shadow: 2px 2px 5px -1px #28aabc !important;
+  -moz-box-shadow: 2px 2px 5px -1px #28aabc !important;
+  box-shadow: 2px 2px 5px -1px #28aabc !important;
+  color: #dddddd !important;
+}
+
+.odd-pad-clicked {
+  -webkit-box-shadow: 2px 2px 5px -1px #d728ca !important;
+  -moz-box-shadow: 2px 2px 5px -1px #d728ca !important;
+  box-shadow: 2px 2px 5px -1px #d728ca !important;
+  color: #dddddd !important;
+}
+
+#footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: fit-content;
+  width: 100%;
+  padding-inline: 5%;
+  padding-block: 12px;
+  overflow: hidden;
+  font-size: 90%;
+  color: #aaaaaa;
+  background-color: #000;
+}
+#footer a {
+  color: #28aabc;
+  text-decoration: none;
+  text-shadow: 1px 1px 2px #28aabc, 0 0 1em #d728ca, 0 0 0.2em #28aabc;
+}
+#footer a:hover {
+  color: #d728ca;
+  text-shadow: 1px 1px 2px #d728ca, 0 0 1em #28aabc, 0 0 0.2em #d728ca;
+}
+
+@media only screen and (max-width: 500px) {
+  #footer {
+    flex-direction: column-reverse;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 7vh;
+    padding: 0;
+    font-size: 80%;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  #display {
+    height: fit-content;
+    font-size: 5vh;
+    margin-block-start: 6vh;
+  }
+
+  #keys li {
+    width: 28%;
+    height: 28%;
+  }
+}
+@media only screen and (max-height: 400px) {
+  body {
+    justify-content: space-evenly;
+  }
+
+  #footer {
+    display: none;
+  }
+}
+@media only screen and (max-device-width: 320px) {
+  header {
+    font-size: 0.9em;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

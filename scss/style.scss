@@ -1,0 +1,197 @@
+@import 'config';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  background-color: lighten($background-color-primary, 10%);
+  font-family: $primary-font-stack;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: 12vh;
+  font-size: 1.4em;
+  color: $background-color-primary;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px $primary-color, 0 0 1em $secondary-color,
+    0 0 0.2em $primary-color;
+}
+
+#drum-machine {
+  height: 70vh;
+  width: 80%;
+  border: 1px solid darken($tertiary-color, 40%);
+  background-color: $background-color-primary;
+  -webkit-box-shadow: 0px 0px 7px 2px lighten($background-color-primary, 40%);
+  -moz-box-shadow: 0px 0px 7px 2px lighten($background-color-primary, 40%);
+  box-shadow: 0px 0px 7px 2px lighten($background-color-primary, 40%);
+}
+
+#display {
+  height: 1.5em;
+  width: 50%;
+  border: 2px solid darken($secondary-color, 20%);
+  font-size: 2.5em;
+  line-height: 1.4em;
+  text-align: center;
+  background-color: $primary-color;
+  margin-inline: auto;
+  margin-block-start: 1em;
+  font-family: $digital-font-stack;
+  text-transform: uppercase;
+  -webkit-box-shadow: inset 0px 0px 20px 2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: inset 0px 0px 20px 2px rgba(0, 0, 0, 0.75);
+  box-shadow: inset 0px 0px 20px 2px rgba(0, 0, 0, 0.75);
+}
+
+#keyboard {
+  height: 60%;
+  width: 80%;
+  margin-inline: auto;
+  margin-block: 7vh;
+}
+
+#keys {
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: space-between;
+  align-content: space-between;
+  height: 100%;
+  width: 100%;
+
+  li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 25%;
+    width: 30%;
+    list-style: none;
+    border-radius: 5px;
+    font-size: 2em;
+    color: darken($tertiary-color, 30%);
+    text-transform: uppercase;
+    background-color: $background-color-primary;
+    @include basic-box-shadow(2px, 2px, 3px, 3px, rgba(215, 40, 202, 0.75));
+    transition: box-shadow 80ms ease-out;
+
+    &:hover {
+      color: $tertiary-color;
+      cursor: grab;
+    }
+
+    &:active {
+      color: $tertiary-color;
+      @include basic-box-shadow(2px, 2px, 5px, -1px, rgba(215, 40, 202, 1));
+    }
+
+    &:nth-of-type(even) {
+      @include basic-box-shadow(2px, 2px, 3px, 3px, rgba(40, 170, 188, 0.75));
+
+      &:active {
+        color: $tertiary-color;
+        @include basic-box-shadow(2px, 2px, 5px, -1px, rgba(40, 170, 188, 1));
+      }
+    }
+  }
+}
+
+//Adding click effect to the pads when used with the keyboard
+
+.even-pad-clicked {
+  -webkit-box-shadow: 2px 2px 5px -1px rgba(40, 170, 188, 1) !important;
+  -moz-box-shadow: 2px 2px 5px -1px rgba(40, 170, 188, 1) !important;
+  box-shadow: 2px 2px 5px -1px rgba(40, 170, 188, 1) !important;
+  color: $tertiary-color !important;
+}
+
+.odd-pad-clicked {
+  -webkit-box-shadow: 2px 2px 5px -1px rgba(215, 40, 202, 1) !important;
+  -moz-box-shadow: 2px 2px 5px -1px rgba(215, 40, 202, 1) !important;
+  box-shadow: 2px 2px 5px -1px rgba(215, 40, 202, 1) !important;
+  color: $tertiary-color !important;
+}
+
+#footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: fit-content;
+  width: 100%;
+  padding-inline: 5%;
+  padding-block: 12px;
+  overflow: hidden;
+  font-size: 90%;
+  color: darken($tertiary-color, 20%);
+  background-color: $background-color-primary;
+
+  a {
+    color: $primary-color;
+    text-decoration: none;
+    text-shadow: 1px 1px 2px $primary-color, 0 0 1em $secondary-color,
+      0 0 0.2em $primary-color;
+
+    &:hover {
+      color: $secondary-color;
+      text-shadow: 1px 1px 2px $secondary-color, 0 0 1em $primary-color,
+        0 0 0.2em $secondary-color;
+    }
+  }
+}
+
+//RWD tweaks
+
+@media only screen and (max-width: 500px) {
+  #footer {
+    flex-direction: column-reverse;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 7vh;
+    padding: 0;
+    font-size: 80%;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  #display {
+    height: fit-content;
+    font-size: 5vh;
+    margin-block-start: 6vh;
+  }
+
+  #keys li {
+    width: 28%;
+    height: 28%;
+  }
+}
+
+@media only screen and (max-height: 400px) {
+  body {
+    justify-content: space-evenly;
+  }
+
+  #footer {
+    display: none;
+  }
+}
+
+//Mobile tweaks
+
+@media only screen and (max-device-width: 320px) {
+  header {
+    font-size: 0.9em;
+  }
+}
