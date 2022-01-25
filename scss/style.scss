@@ -190,6 +190,12 @@ header {
 
 //Mobile tweaks
 
+@media only screen and (max-device-width: 520px) {
+  #display {
+    font-size: 7vw;
+  }
+}
+
 @media only screen and (max-device-width: 320px) {
   header {
     font-size: 0.9em;
